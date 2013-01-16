@@ -87,6 +87,18 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+#TEMPLATE_CONTEXT_PROCESSORS = (
+
+# default template context processors
+#    'django.core.context_processors.auth',
+#    'django.core.context_processors.debug',
+#    'django.core.context_processors.i18n',
+#    'django.core.context_processors.media',
+#
+#    'django.core.context_processors.request',
+#
+#)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,6 +121,13 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+
+    # django-admin-tools
+    # 'admin_tools',
+    # 'admin_tools.theming',
+    # 'admin_tools.menu',
+    # 'admin_tools.dashboard',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -120,6 +139,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'cadastro',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
