@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r"^$", "core.views.login", name="home"),
     url(r"^cadastro/", "core.views.cadastro"),
-    url(r"^cadastro/emissao/", "emissao.views.emissao"),
+    #url(r"^cadastro/emissao/", "emissao.views.emissao"),
 
 
 )
