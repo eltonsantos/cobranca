@@ -15,8 +15,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^$', include(admin.site.urls)),
-    url(r"^$", "login.views.login", name="home"),
-    url(r"^cadastro/", "cadastro.views.cadastro"),
+    url(r"^$", "core.views.login", name="home"),
+    url(r"^cadastro/", "core.views.cadastro"),
+    url(r"^cadastro/emissao/", "emissao.views.emissao"),
+
 
 )
