@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1 class="text-error">Sistema de login</h1>
+<h1 class="strong">Sistema de login</h1>
 
 
 <form method="post">
