@@ -1,14 +1,6 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset=utf-8>
-    <meta name=description content="Sistema de login">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css" />
-    <title>Cadastro de usuários</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block conteudo %}
 
 <h1>Cadastro de usuários</h1>
 
@@ -22,5 +14,4 @@
 
 </form>
 
-</body>
-</html>
+{% endblock %}
