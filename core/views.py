@@ -25,7 +25,7 @@ def login(request):
 		
 		# se o formulário for válido
 		if form.is_valid():
-			login(request, form.get_user())
+			logar(request, form.get_user())
 			return HttpResponseRedirect("/principal/") # Redireciona o usuário para página principal
 		else:
 			return render(request, "login.html", {"form" : form})
