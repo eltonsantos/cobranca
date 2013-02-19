@@ -10,14 +10,19 @@ Data de expiração:00/00/0000 </h6>
  
 <div id="container">
 
-<form method="post">
+<p>Usuario de teste:
+<small>teste / teste</small>
+</p>
+<br />
+
+<form method="post" action="">
 <img src="{{ STATIC_URL }}img/logo_ofelia.png">
 <br /><br />
 {% csrf_token %}
 
 {{ form.as_p }}
 
-<input type="submit" value="Logar" />
+<input type="submit" />
 
 </form>
 

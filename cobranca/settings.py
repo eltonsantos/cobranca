@@ -118,6 +118,10 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, "templates"),
 )
 
+LOGIN_REDIRECT_URL = '/principal/'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+
 INSTALLED_APPS = (
 
     # django-admin-tools
