@@ -26,5 +26,3 @@ urlpatterns = patterns('',
 
 
 )
-3270-6712
-#antonia, leiiana
