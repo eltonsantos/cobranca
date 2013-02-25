@@ -4,8 +4,14 @@
 
 <h1>Esse conteúdo só será mostrado se o usuário estiver logado!</h1>
 
-<a href="/cadastro/">Cadastrar novo usuário</a>
-<br /><br />
+<a href="/cadastro-usuarios/">Cadastrar novo usuário</a>
+<br /><br /><br />
+
+<a href="/cadastro-pessoas/">Cadastrar nova pessoa</a>
+<br /><br /><br />
+
+<a href="/visualizar-cadastrados/">Visualizar cadastrados</a>
+<br /><br /><br />
 
 {% if user.is_authenticated %}
 <h4>Olá {{ user.username }}</h4>
