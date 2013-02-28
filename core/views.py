@@ -17,7 +17,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import redirect_to_login
 #from models import UserProfile
 from models import PessoaFisica, PessoaJuridica
-from forms import CadastroUsuarioForm, CadastroPessoasForm
+from forms import CadastroUsuarioForm, CadastroPessoaFisicaForm, CadastroPessoaJuridicaForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Função que direciona para a página principal
@@ -40,10 +40,9 @@ def login(request):
 
 	#return render(request, "login.html", {"form" : AuthenticationForm()}) 
 
+
 def logout(request):
 	pass
-
-
 
 
 # Função que cadastra usuários
@@ -68,11 +67,11 @@ def cadusuarios(request):
 
 # Função que cadastra pessoas
 @login_required	
-def cadpessoas(request):
-	template_name = "core/cadastro-pessoas.html"
+def cadpessoafisica(request):
+	template_name = "core/cadastro-pessoa-fisica.html"
 	context = {}
 	if request.method == "POST":
-		form = CadastroPessoasForm(request.POST)
+		form = CadastroPessoaFisicaForm(request.POST)
 		if form.is_valid():
 			form.save()
 			#cadp = form.save(commit=False)
@@ -80,9 +79,29 @@ def cadpessoas(request):
 			#cadp.save()
 			return HttpResponseRedirect("/principal/")
 	else:
-		form = CadastroPessoasForm()
+		form = CadastroPessoaFisicaForm()
 	context['form'] = form
 	return render(request, template_name, context)
+
+
+# Função que cadastra pessoas
+@login_required	
+def cadpessoajuridica(request):
+	template_name = "core/cadastro-pessoa-juridica.html"
+	context = {}
+	if request.method == "POST":
+		form = CadastroPessoaJuridicaForm(request.POST)
+		if form.is_valid():
+			form.save()
+			#cadp = form.save(commit=False)
+			#cadp.user = request.user
+			#cadp.save()
+			return HttpResponseRedirect("/principal/")
+	else:
+		form = CadastroPessoaJuridicaForm()
+	context['form'] = form
+	return render(request, template_name, context)
+
 
 @login_required
 def visualizar(request):
@@ -103,6 +122,7 @@ def visualizar(request):
 	context['cadastros'] = cadastros
 	return render(request, template_name, context)	
 
+
 # Função que visualiza detalhes dos cadastros
 @login_required
 def detalhes(request, pk):
@@ -112,6 +132,7 @@ def detalhes(request, pk):
         'cadastro': cadastro,
     }
     return render(request, template_name, context)
+
 
 # Funçao usada pra emitir boleto
 def emissao(request):

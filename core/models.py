@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.db import models
 #from django.forms.widgets import RadioSelect
+from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.localflavor.br.br_states import STATE_CHOICES
 from django.core.urlresolvers import reverse
@@ -29,8 +29,8 @@ class Pessoa(models.Model):
 	TERCEIRIZADO = "terc"
 	FUNCIONARIO  = "func"
 
-	PFISICA   = "pf"
-	PJURIDICA = "pj"
+	#PFISICA   = "pf"
+	#PJURIDICA = "pj"
 
 	TYPE_CAD     =  (
 					 (FORNECEDOR, "Fornecedor"),
@@ -39,16 +39,16 @@ class Pessoa(models.Model):
 					 (FUNCIONARIO, "Funcionário"),							
 					)
 	
-	TYPE_PES = (
-				(PFISICA, "Pessoa Física"),
-				(PJURIDICA, "Pessoa Jurídica"),
-			   )
+	#TYPE_PES = (
+	#			(PFISICA, "Pessoa Física"),
+	#			(PJURIDICA, "Pessoa Jurídica"),
+	#		   )
 	
-	tipo_pessoa   = models.CharField(choices=TYPE_PES, verbose_name=u"Tipo de Pessoa", max_length=2) 
-	tipo_cadastro = models.CharField(choices=TYPE_CAD, verbose_name=u"Tipo de Cadastro", max_length=4)
-	#cod_cliente   = models.CharField(verbose_name=u"Código do cliente", max_length=100)
-	nome          = models.CharField(verbose_name=u"Nome", max_length=200)
+	#tipo_pessoa   = models.CharField(choices=TYPE_PES, verbose_name=u"Tipo de Pessoa", max_length=2)
 	#endereco      = models.ForeignKey("Endereco", verbose_name=u"Endereço", blank=True)
+	#cod_cliente   = models.CharField(verbose_name=u"Código do cliente", max_length=100)
+	tipo_cadastro = models.CharField(choices=TYPE_CAD, verbose_name=u"Tipo de Cadastro", max_length=4)
+	nome          = models.CharField(verbose_name=u"Nome", max_length=200)
 	telefone      = models.CharField(verbose_name=u"Telefone", max_length=15)
 	celular       = models.CharField(verbose_name=u"Celular", max_length=15)
 	email         = models.EmailField(verbose_name=u"Email")
@@ -66,11 +66,11 @@ class PessoaFisica(Pessoa):
 	nome_mae    = models.CharField(verbose_name=u"Nome da mãe", max_length=200)
 	resp_financ = models.CharField(verbose_name=u"Responsável Financeiro", max_length=200)	
 	matricula   = models.IntegerField(verbose_name=u"Matrícula", max_length=30)
-	#cargo        = Tipo Cargo
 	salario     = models.CharField(verbose_name=u"Salário", max_length=100)
 	comissao    = models.CharField(verbose_name=u"Comissão", max_length=100)
-	#departamento = Tipo Departamento
 	contratado  = models.CharField(verbose_name=u"Contratado", max_length=100)
+	#cargo        = Tipo Cargo
+	#departamento = Tipo Departamento
 
 	@models.permalink
 	def get_absolute_url(self):
@@ -86,12 +86,12 @@ class PessoaJuridica(Pessoa):
 	insc_estadual   = models.IntegerField(verbose_name=u"Insc. Estadual", max_length=15)
 	contato         = models.CharField(verbose_name=u"Contato", max_length=30)
 	telefoneContato = models.CharField(verbose_name=u"Telefones de Contato", max_length=200)
+	produto         = models.CharField(verbose_name=u"Produto", max_length=200)
+	servico         = models.CharField(verbose_name=u"Serviço", max_length=200)
 	fax             = models.CharField(verbose_name=u"Fax", max_length=15)
 	#contrato        = Tipo Contrato
 	#socios          = Tipo Socios
 	#contas          = Tipo Conta
-	produto         = models.CharField(verbose_name=u"Produto", max_length=200)
-	servico         = models.CharField(verbose_name=u"Serviço", max_length=200)
 
 #class Bairro(Endereco):
 #	bairro = models.CharField(verbose_name=u"Bairro", max_length=200)
@@ -108,12 +108,13 @@ class PessoaJuridica(Pessoa):
 class Endereco(models.Model):
 	logradouro = models.CharField(verbose_name=u"Nome do Logradouro", max_length=200)
 	tipo       = models.CharField(verbose_name=u"Tipo do Logradouro", max_length=50)
-#	bairro     = models.ForeignKey(Bairro, verbose_name=u"Bairro")
 	numero     = models.IntegerField(verbose_name=u"Número", max_length=10)
-#	cidade     = models.ForeignKey(Cidade, verbose_name=u"Cidade")
 	estado     = models.CharField(choices=STATE_CHOICES, verbose_name=u"Estado", max_length=2)
-#	pais       = models.ForeignKey(Pais, verbose_name=u"País")
 	cep        = models.CharField(verbose_name=u"CEP", max_length=200)
+#	bairro     = models.ForeignKey(Bairro, verbose_name=u"Bairro")
+#	pais       = models.ForeignKey(Pais, verbose_name=u"País")
+#	cidade     = models.ForeignKey(Cidade, verbose_name=u"Cidade")
+
 
 class RelacaoClientes(models.Model):
 	pk_pjuridica = models.ForeignKey(PessoaJuridica, verbose_name=u"Pessoa Jurídica")

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from models import PessoaFisica
+from models import PessoaFisica, PessoaJuridica
 #from models import UserProfile
 from django.contrib.auth.forms import UserCreationForm
 
@@ -21,7 +21,14 @@ class CadastroUsuarioForm(UserCreationForm):
 	#	model = User
 	#	fields = "Tipo de usuário"
 
-class CadastroPessoasForm(forms.ModelForm):
+
+class CadastroPessoaFisicaForm(forms.ModelForm):
 	
 	class Meta:
 		model = PessoaFisica
+
+
+class CadastroPessoaJuridicaForm(forms.ModelForm):
+	
+	class Meta:
+		model = PessoaJuridica

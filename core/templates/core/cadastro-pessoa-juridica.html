@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h1>Cadastro de Pessoa Física</h1>
+
+<form method="post" action="">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<input type="submit" value="Cadastrar Pessoas" />
+
+</form>
+
+<br /><br />
+<a href="/principal/">Voltar para principal</a>
+<br /><br />
+
+{% endblock %}
