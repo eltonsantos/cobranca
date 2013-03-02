@@ -52,7 +52,7 @@ class Pessoa(models.Model):
 	telefone      = models.CharField(verbose_name=u"Telefone", max_length=15)
 	celular       = models.CharField(verbose_name=u"Celular", max_length=15)
 	email         = models.EmailField(verbose_name=u"Email")
-	ativo         = models.BooleanField(verbose_name=u"Ativo?", blank=True)
+	ativo         = models.BooleanField(verbose_name=u"Ativo?", blank=False)
 
 	class Meta:
 		abstract = True
@@ -68,7 +68,7 @@ class PessoaFisica(Pessoa):
 	matricula   = models.IntegerField(verbose_name=u"Matrícula", max_length=30)
 	salario     = models.CharField(verbose_name=u"Salário", max_length=100)
 	comissao    = models.CharField(verbose_name=u"Comissão", max_length=100)
-	contratado  = models.CharField(verbose_name=u"Contratado", max_length=100)
+	contratado  = models.BooleanField(verbose_name=u"Contratado?",blank=False)
 	#cargo        = Tipo Cargo
 	#departamento = Tipo Departamento
 
