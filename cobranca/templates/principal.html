@@ -2,14 +2,17 @@
 
 {% block conteudo %}
 
+<div id="container">
 <h1>Esse conteúdo só será mostrado se o usuário estiver logado!</h1>
 
 <a href="/cadastro/">Cadastrar novo usuário</a>
+
 <br /><br />
 
 {% if user.is_authenticated %}
 <h4>Olá {{ user.username }}</h4>
 <a href="{% url logout %}">Sair</a>
-{% endif %}
 
+{% endif %}
+</div><!-- Final da div container -->
 {% endblock %}
