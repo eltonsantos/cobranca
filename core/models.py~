@@ -31,17 +31,43 @@ class Pessoa(models.Model):
 	telefone      = models.CharField(verbose_name=u"Telefone", max_length=15)
 	celular       = models.CharField(verbose_name=u"Celular", max_length=15)
 	email         = models.EmailField(verbose_name=u"Email")
+<<<<<<< HEAD
+	ativo         = models.BooleanField(verbose_name=u"Ativo?", blank=True)	
+=======
 	ativo         = models.BooleanField(verbose_name=u"Ativo?", blank=False)
+
+	class Meta:
+		abstract = True
+
+# Classe Pesssoa Fisica herdando da Classe Pessoa
+class PessoaFisica(Pessoa):
+>>>>>>> 0b3e5f84839a59d2cca1c819611bdf34a0348ece
 	cpf         = models.CharField(verbose_name=u"CPF", max_length=15)
 	rg          = models.CharField(verbose_name=u"RG", max_length=15)
 	dt_nasc     = models.DateField(verbose_name=u"Data de nascimento", auto_now_add=True)
 	nome_pai    = models.CharField(verbose_name=u"Nome do pai", max_length=200)
 	nome_mae    = models.CharField(verbose_name=u"Nome da mãe", max_length=200)
+<<<<<<< HEAD
 	resp_financ = models.CharField(verbose_name=u"Responsável Financeiro", max_length=200)
+=======
+	resp_financ = models.CharField(verbose_name=u"Responsável Financeiro", max_length=200)	
 	matricula   = models.IntegerField(verbose_name=u"Matrícula", max_length=30)
 	salario     = models.CharField(verbose_name=u"Salário", max_length=100)
 	comissao    = models.CharField(verbose_name=u"Comissão", max_length=100)
 	contratado  = models.BooleanField(verbose_name=u"Contratado?",blank=False)
+	#cargo        = Tipo Cargo
+	#departamento = Tipo Departamento
+
+	@models.permalink
+	def get_absolute_url(self):
+		return ('visualizar-detalhes', (), {'pk': self.pk})
+
+	def __unicode__(self):
+		return self.nome
+
+# Classe Pessoa Juridica herdando da Classe Pessoa
+class PessoaJuridica(Pessoa):
+>>>>>>> 0b3e5f84839a59d2cca1c819611bdf34a0348ece
 	nome_fantasia   = models.CharField(verbose_name=u"Nome Fantasia", max_length=200)
 	cnpj            = models.CharField(verbose_name=u"CNPJ", max_length=200)
 	insc_estadual   = models.IntegerField(verbose_name=u"Insc. Estadual", max_length=15)
@@ -55,6 +81,10 @@ class Pessoa(models.Model):
 	cep        = models.CharField(verbose_name=u"CEP", max_length=10)	
 	cidade     = models.CharField(verbose_name=u"Cidade", max_length=80)
 	estado     = models.CharField(choices=STATE_CHOICES, verbose_name=u"Estado", max_length=2)
+	pais       = models.CharField(verbose_name=u"País", max_length=200)
 
 	def __unicode__(self):
-		return self.nome
+		return self.nome+ " | " +self.cep
+
+	class Meta:
+		verbose_name = "Pessoa"
