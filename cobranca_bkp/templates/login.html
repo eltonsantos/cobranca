@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h6 class="top">Versão: 1.0.2013<br>
+  Licenciado para: Nome da Empresa<br>
+Data de expiração:00/00/0000 </h6>
+
+<!-- Inicio da tela de login -->
+ 
+<div id="container">
+
+<p>Usuario de teste:
+<small>teste / teste</small>
+</p>
+<br />
+
+<form method="post" action="">
+<img src="{{ STATIC_URL }}img/logo_ofelia.png">
+<br /><br />
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<input type="submit" />
+
+</form>
+
+</div><!-- Final da div container -->
+
+{% endblock %}

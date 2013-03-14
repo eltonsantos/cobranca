@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from models import PessoaFisica, PessoaJuridica
-#from models import UserProfile
+from models import Pessoa
 from django.contrib.auth.forms import UserCreationForm
 
 class CadastroUsuarioForm(UserCreationForm):
@@ -21,14 +20,21 @@ class CadastroUsuarioForm(UserCreationForm):
 	#	model = User
 	#	fields = "Tipo de usuário"
 
-
-class CadastroPessoaFisicaForm(forms.ModelForm):
+class CadastroPessoasForm(forms.ModelForm):
 	
 	class Meta:
-		model = PessoaFisica
+		model = Pessoa
 
 
-class CadastroPessoaJuridicaForm(forms.ModelForm):
+class PessoaFisicaForm(forms.ModelForm):
 	
 	class Meta:
-		model = PessoaJuridica
+		model = Pessoa
+		fields = ("cpf", "rg")
+
+
+class PessoaJuridicaForm(forms.ModelForm):
+	
+	class Meta:
+		model = Pessoa
+		fields = ("cnpj", "insc_estadual")
