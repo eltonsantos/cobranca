@@ -77,8 +77,8 @@ def visualizar(request):
 
 # Função que visualiza detalhes dos cadastros
 @login_required
-def detalhes(request, pk):
-    cadastro = get_object_or_404(PessoaFisica, pk=pk)
+def detalhes(request, pessoa_id):
+    cadastro = get_object_or_404(Pessoa, pk=pessoa_id)
     template_name = 'core/visualizar-detalhes.html'
     context = {
         'cadastro': cadastro,

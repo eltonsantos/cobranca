@@ -56,5 +56,9 @@ class Pessoa(models.Model):
 	cidade     = models.CharField(verbose_name=u"Cidade", max_length=80)
 	estado     = models.CharField(choices=STATE_CHOICES, verbose_name=u"Estado", max_length=2)
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ("visualizar-detalhes", (), {'pessoa_id' : self.id})
+
 	def __unicode__(self):
 		return self.nome

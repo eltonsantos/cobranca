@@ -24,9 +24,8 @@ urlpatterns = patterns('',
     url(r"^cadastro-usuarios/", "core.views.cadusuarios"),
     url(r"^cadastro-pessoas/", "core.views.cadpessoas"),
     url(r"^visualizar-cadastrados/", "core.views.visualizar"),
-    url(r"^(?P<pk>\d+)/$", 'core.views.detalhes', name="visualizar-detalhes"),
+    url(r"^(?P<pessoa_id>\d+)/$", 'core.views.detalhes', name="visualizar-detalhes"),
     url(r"^principal/", "core.views.principal"),
-    url(r'^municipios/', include('municipios.urls')),
     #url(r"^cadastro/emissao/", "emissao.views.emissao"),
 
 
