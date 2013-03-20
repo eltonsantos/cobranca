@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+
+<h2>{{ msg }}</h2>
+
+
+<h1>Cadastro de Usuários</h1>
+
+<form method="post" action="">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<input type="submit" value="Cadastrar" />
+
+</form>
+
+<br /><br />
+<a href="/principal/">Voltar para principal</a>
+<br /><br />
+
+{% endblock %}

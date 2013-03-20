@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h1>Visualizar cadastrados</h1>
+
+<table class="tabela-visualizacao">
+<tr>
+	<td><b>Código</b></td>
+	<td><b>Nome</b></td>
+	<td><b>Email</b></td>
+	<td><b>Ativo</b></td>	
+</tr>
+
+{% for pes in pessoa %}
+<tr>
+	<td><a href="{{ pes.get_absolute_url }}">{{ pes.id }}</a></td>
+	<td>{{ pes.nome }}</td>
+	<td>{{ pes.email }}</td>
+	<td>{{ pes.ativo }}</td>	
+</tr>
+
+{% empty %}
+	<div class="alert alert-info">Nenhum cadastro encontrado!</div>
+
+{% endfor %}
+
+</table>
+
+<br /><br />
+<a href="/principal/">Voltar para principal</a>
+<br /><br />
+
+{% endblock %}

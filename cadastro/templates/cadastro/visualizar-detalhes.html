@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+
+{% block conteudo %}
+<div class="page-header">
+    <h1>Informações completas</h1>
+</div>
+ 
+<ul>
+    <li>Código: <strong>{{ cadastro.id }}</strong></li>
+    <li>Tipo de pessoa: <strong>{{ cadastro.tipo_pessoa }}</strong></li>
+    <li>Está ativo? <strong>{{ cadastro.ativo }}</strong></li>
+    <li>É fornecedor? <strong>{{ cadastro.fornecedor }}</strong></li>
+    <li>É cliente? <strong>{{ cadastro.cliente }}</strong></li>
+    <li>É terceirizado? <strong>{{ cadastro.terceirizado }}</strong></li>
+    <li>É Funcionário? <strong>{{ cadastro.funcionario }}</strong></li>
+    <li>Está contratado? <strong>{{ cadastro.contratado }}</strong></li>
+    <li>Nome: <strong>{{ cadastro.nome }}</strong></li>
+    <li>Telefone: <strong>{{ cadastro.telefone }}</strong></li>
+    <li>Celular: <strong>{{ cadastro.celular }}</strong></li>
+    <li>Email: <strong>{{ cadastro.email }}</strong></li>
+    <li>CPF: <strong>{{ cadastro.cpf }}</strong></li>
+    <li>RG: <strong>{{ cadastro.rg }}</strong></li>
+    <li>Data de nascimento: <strong>{{ cadastro.dt_nasc }}</strong></li>
+    <li>Nome do pai: <strong>{{ cadastro.nome_pai }}</strong></li>
+    <li>Nome da mãe: <strong>{{ cadastro.nome_mae }}</strong></li>
+    <li>Responsável financeiro: <strong>{{ cadastro.resp_financ }}</strong></li>
+    <li>Matrícula: <strong>{{ cadastro.matricula }}</strong></li>
+    <li>Salário: <strong>{{ cadastro.salario }}</strong></li>    
+    <li>Comissão: <strong>{{ cadastro.comissao }}</strong></li>
+    <li>Nome fantasia: <strong>{{ cadastro.nome_fantasia }}</strong></li>
+    <li>CNPJ: <strong>{{ cadastro.cnpj }}</strong></li>
+    <li>Inscrição estadual: <strong>{{ cadastro.insc_estadual }}</strong></li>
+    <li>Contato: <strong>{{ cadastro.contato }}</strong></li>
+    <li>Telefone de contato: <strong>{{ cadastro.telefone_contato }}</strong></li>
+    <li>FAX: <strong>{{ cadastro.fax }}</strong></li>
+    <li>Nome logradouro: <strong>{{ cadastro.nome_logradouro }}</strong></li>
+    <li>Tipo logradouro: <strong>{{ cadastro.tipo_logradouro }}</strong></li>
+    <li>Número: <strong>{{ cadastro.numero }}</strong></li>
+    <li>Bairro: <strong>{{ cadastro.bairro }}</strong></li>
+    <li>CEP: <strong>{{ cadastro.cep }}</strong></li>    
+    <li>Cidade: <strong>{{ cadastro.cidade }}</strong></li>
+    <li>Estado: <strong>{{ cadastro.estado }}</strong></li>
+</ul>
+
+<br />
+
+<a href="/principal">Voltar</a>
+{% endblock %}
