@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.localflavor.br.br_states import STATE_CHOICES
+from django.contrib.localflavor.br.forms import BRCNPJField
 from django.core.urlresolvers import reverse
 
 class Pessoa(models.Model):
@@ -43,13 +44,14 @@ class Pessoa(models.Model):
 	comissao    = models.CharField(verbose_name=u"Comissão", max_length=100)
 	contratado  = models.BooleanField(verbose_name=u"Contratado?",blank=False)
 	nome_fantasia   = models.CharField(verbose_name=u"Nome Fantasia", max_length=200)
-	cnpj            = models.CharField(verbose_name=u"CNPJ", max_length=200)
+	#cnpj            = models.CharField(verbose_name=u"CNPJ", max_length=200)
+	cnpj             = BRCNPJField(label='CNPJ', required=False)
 	insc_estadual   = models.IntegerField(verbose_name=u"Insc. Estadual", max_length=15)
 	contato         = models.CharField(verbose_name=u"Contato", max_length=30)
 	telefone_Contato = models.CharField(verbose_name=u"Telefones de Contato", max_length=200)
 	fax              = models.CharField(verbose_name=u"Fax", max_length=15)
 	nome_logradouro  = models.CharField(verbose_name=u"Nome do Logradouro", max_length=200)
-	tipo_logradouro  = models.CharField(verbose_name=u"Tipo do Logradouro", max_length=50)
+	#tipo_logradouro  = models.CharField(verbose_name=u"Tipo do Logradouro", max_length=50)
 	numero     = models.IntegerField(verbose_name=u"Número", max_length=10)
 	bairro     = models.CharField(verbose_name=u"Bairro", max_length=50)
 	cep        = models.CharField(verbose_name=u"CEP", max_length=10)	
