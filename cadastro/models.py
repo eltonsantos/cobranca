@@ -29,6 +29,7 @@ class Pessoa(models.Model):
 	cpf         = models.CharField(verbose_name=u"CPF", max_length=15, unique=True)
 	rg          = models.CharField(verbose_name=u"RG", max_length=15, unique=True)
 	dt_nasc     = models.DateField(verbose_name=u"Data de nascimento", auto_now_add=True)
+	dt_fund     = models.DateField(verbose_name=u"Data de Fundação", auto_now_add=True)
 	nome_pai    = models.CharField(verbose_name=u"Nome do pai", max_length=200)
 	nome_mae    = models.CharField(verbose_name=u"Nome da mãe", max_length=200)
 	resp_financ = models.CharField(verbose_name=u"Responsável Financeiro", max_length=200)

@@ -2,37 +2,28 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.localflavor.br.br_states import STATE_CHOICES
-from django.contrib.localflavor.br.forms import BRCNPJField
 from django.core.urlresolvers import reverse
 
 class Pessoa(models.Model):
-	FORNECEDOR   = "Fornecedor"
-	CLIENTE      = "Cliente"
-	TERCEIRIZADO = "Terceirizado"
-	FUNCIONARIO  = "Funcionário"
-
+	
 	PFISICA   = "Fisica"
 	PJURIDICA = "Juridica"
 
-	TYPE_CAD     =  (
-					 (FORNECEDOR, "Fornecedor"),
-					 (CLIENTE, "Cliente"),
-					 (TERCEIRIZADO, "Terceirizado"),
-					 (FUNCIONARIO, "Funcionário"),							
-					)
-	
+		
 	TYPE_PES = (
 				(PFISICA, "Física"),
-				(PJURIDICA, "Jurídica"),
-			   )
-
-	tipo_cadastro = models.CharField(choices=TYPE_CAD, verbose_name=u"Tipo de Cadastro", max_length=15)
-	tipo_pessoa   = models.CharField(choices=TYPE_PES, verbose_name=u"Tipo de Pessoa", max_length=25)
-	nome          = models.CharField(verbose_name=u"Nome", max_length=200)
-	telefone      = models.CharField(verbose_name=u"Telefone", max_length=15)
-	celular       = models.CharField(verbose_name=u"Celular", max_length=15)
-	email         = models.EmailField(verbose_name=u"Email")
-	ativo         = models.BooleanField(verbose_name=u"Ativo?", blank=False)
+				(PJURIDICA, "Jurídica"),)
+    
+    fornecedor  = models.BooleanField(verbose_name=u"Fornecedor", blank=False) 
+    cliente     = models.BooleanField(verbose_name=u"Cliente", blank=False)
+    terceirizado= models.BooleanField(verbose_name=u"Terceirizado", blank=False)
+    funcionario = models.BooleanField(verbose_name=u"Funcionario", blank=False)
+    tipo_pessoa = models.CharField(choices=TYPE_PES, verbose_name=u"Tipo de Pessoa", max_length=25)
+    nome        = models.CharField(verbose_name=u"Nome", max_length=200)
+    telefone    = models.CharField(verbose_name=u"Telefone", max_length=15)
+	celular     = models.CharField(verbose_name=u"Celular", max_length=15)
+	email       = models.EmailField(verbose_name=u"Email")
+	ativo       = models.BooleanField(verbose_name=u"Ativo?", blank=False)
 	cpf         = models.CharField(verbose_name=u"CPF", max_length=15)
 	rg          = models.CharField(verbose_name=u"RG", max_length=15)
 	dt_nasc     = models.DateField(verbose_name=u"Data de nascimento", auto_now_add=True)
@@ -44,14 +35,13 @@ class Pessoa(models.Model):
 	comissao    = models.CharField(verbose_name=u"Comissão", max_length=100)
 	contratado  = models.BooleanField(verbose_name=u"Contratado?",blank=False)
 	nome_fantasia   = models.CharField(verbose_name=u"Nome Fantasia", max_length=200)
-	#cnpj            = models.CharField(verbose_name=u"CNPJ", max_length=200)
-	cnpj             = BRCNPJField(label='CNPJ', required=False)
+	cnpj            = models.CharField(verbose_name=u"CNPJ", max_length=200)
 	insc_estadual   = models.IntegerField(verbose_name=u"Insc. Estadual", max_length=15)
 	contato         = models.CharField(verbose_name=u"Contato", max_length=30)
 	telefone_Contato = models.CharField(verbose_name=u"Telefones de Contato", max_length=200)
 	fax              = models.CharField(verbose_name=u"Fax", max_length=15)
 	nome_logradouro  = models.CharField(verbose_name=u"Nome do Logradouro", max_length=200)
-	#tipo_logradouro  = models.CharField(verbose_name=u"Tipo do Logradouro", max_length=50)
+	tipo_logradouro  = models.CharField(verbose_name=u"Tipo do Logradouro", max_length=50)
 	numero     = models.IntegerField(verbose_name=u"Número", max_length=10)
 	bairro     = models.CharField(verbose_name=u"Bairro", max_length=50)
 	cep        = models.CharField(verbose_name=u"CEP", max_length=10)	
