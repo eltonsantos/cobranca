@@ -83,13 +83,22 @@ def detalhes(request, pessoa_id):
 	cadastro = get_object_or_404(Pessoa, pk=pessoa_id)
 	return render(request, "cadastro/visualizar-detalhes.html", {"cadastro" : cadastro})
 
-#def detalhes(request, pessoa_id):
-#    cadastro = get_object_or_404(Pessoa, pessoa_id=pessoa_id)
-#    template_name = 'cadastro/visualizar-detalhes.html'
-#    context = {
-#        'cadastro': cadastro,
-#    }
-#    return render(request, template_name, context)
+
+@login_required
+def editar(request, pessoa_id):
+	template_name = "cadastro/editar-cadastrados.html"
+	cadastro = get_object_or_404(Pessoa, pk=pessoa_id)
+	context = {}
+	context['cadastro'] = cadastro
+	if request.method == "POST":
+		form = CadastroPessoasForm(data=request.POST, instance=cadastro)
+		if form.is_valid():
+			form.save()
+			return redirect('visualizar_cadastros')
+	else:
+		form = CadastroPessoasForm(instance=cadastro)
+	context['form'] = form
+	return render(request, template_name, context)
 
 
 # Funçao usada pra emitir boleto

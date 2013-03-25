@@ -2,6 +2,7 @@
 from django import forms
 from models import Pessoa
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class CadastroUsuarioForm(UserCreationForm):
 
@@ -16,9 +17,9 @@ class CadastroUsuarioForm(UserCreationForm):
 
 	tipo_usuario = forms.ChoiceField(choices=TYPE_USER, label="Tipo de usuário")
 
-	#class Meta:
-	#	model = User
-	#	fields = "Tipo de usuário"
+	class Meta:
+		model = User
+		#fields = "Tipo_de_usuario"
 
 class CadastroPessoasForm(forms.ModelForm):
 	

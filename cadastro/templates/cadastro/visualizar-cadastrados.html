@@ -10,6 +10,7 @@
 	<td><b>Nome</b></td>
 	<td><b>Email</b></td>
 	<td><b>Ativo</b></td>	
+	<td>&nbsp;</td>
 </tr>
 
 {% for pes in pessoa %}
@@ -17,7 +18,10 @@
 	<td><a href="{{ pes.get_absolute_url }}">{{ pes.id }}</a></td>
 	<td>{{ pes.nome }}</td>
 	<td>{{ pes.email }}</td>
-	<td>{{ pes.ativo }}</td>	
+	<td>
+		<input type="checkbox" {% if pes.ativo %}checked="checked"{% endif %} disabled />
+	</td>	
+	<td><a href="{% url editar-cadastros pes.pk %}" />Editar dados</a></td>
 </tr>
 
 {% empty %}

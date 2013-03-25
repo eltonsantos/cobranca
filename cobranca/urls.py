@@ -14,7 +14,6 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     #url(r"^$", "cadastro.views.login", name="home"),
@@ -23,8 +22,9 @@ urlpatterns = patterns('',
     #url(r'^cadastro/', "cadastro.views.cadastro"),
     url(r"^cadastro-usuarios/", "cadastro.views.cadusuarios"),
     url(r"^cadastro-pessoas/", "cadastro.views.cadpessoas"),
-    url(r"^visualizar-cadastrados/", "cadastro.views.visualizar"),
-    url(r"^visualizar-detalhes/(?P<pessoa_id>\d+)/$", 'cadastro.views.detalhes', name="visualizar-detalhes"),
+    url(r"^visualizar-cadastrados/", "cadastro.views.visualizar", name='visualizar_cadastros'),
+    url(r"^(?P<pessoa_id>\d+)/visualizar-detalhes/$", 'cadastro.views.detalhes', name="visualizar-detalhes"),
+    url(r'^(?P<pessoa_id>\d+)/editar-cadastros/$', 'cadastro.views.editar', name='editar-cadastros'),
     url(r"^principal/", "cadastro.views.principal"),
     #url(r"^cadastro/emissao/", "emissao.views.emissao"),
 
